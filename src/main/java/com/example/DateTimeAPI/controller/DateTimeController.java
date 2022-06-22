@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
@@ -26,5 +27,10 @@ public class DateTimeController {
     @GetMapping("/date")
     public ResponseEntity<LocalDate> getDate () {
         return new ResponseEntity<>(dateTimeService.getDate(), HttpStatus.OK);
+    }
+
+    @GetMapping("/dateRequest")
+    public ResponseEntity<String> getDateRequest (@RequestParam String format) {
+        return new ResponseEntity<>(dateTimeService.getDateRequest(format), HttpStatus.OK);
     }
 }
